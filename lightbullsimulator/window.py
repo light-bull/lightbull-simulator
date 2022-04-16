@@ -18,6 +18,6 @@ class LightbullSimulatorMain(QtWidgets.QMainWindow):
 
     def initTimer(self, reload_per_second):
         self.timer = QtCore.QTimer()
-        self.timer.setInterval(1.0/reload_per_second)
+        self.timer.setInterval(1000.0/reload_per_second)
         self.timer.timeout.connect(self._widget.update)
         self.timer.start()

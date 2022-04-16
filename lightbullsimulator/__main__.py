@@ -14,7 +14,7 @@ def run():
     parser = argparse.ArgumentParser()
     parser.add_argument("-u", "--url", type=str, required=True, help="URL of the server")
     parser.add_argument("-p", "--password", type=str, required=True, help="Password for API")
-    parser.add_argument("-r", "--reload", type=int, default=4, help="Number of reloads per second (default: 4)")
+    parser.add_argument("-r", "--reload", type=int, default=5, help="Number of reloads per second (default: 5)")
     args = parser.parse_args()
 
     # make ctrl-c work
@@ -23,7 +23,7 @@ def run():
     # connect to lightbull api
     try:
         api = Lightbull(args.url, args.password)
-    except LightbullError as e:
+    except (LightbullError, OSError) as e:
         fail("Cannot connect to lightbull API: {}".format(e))
 
     # start ui

@@ -34,7 +34,7 @@ class LedWidget(QtWidgets.QWidget):
 
             for part, partdata in data.items():
                 self._parts[part].update(partdata)
-        except LightbullError as e:
+        except (LightbullError, OSError) as e:
             print("Cannot query lightbull API: {}".format(e))
 
 

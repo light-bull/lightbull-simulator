@@ -12,8 +12,8 @@ from .utils import fail
 def run():
     # parse command line arguments
     parser = argparse.ArgumentParser()
-    parser.add_argument("-u", "--url", type=str, required=True, help="URL of the server")
-    parser.add_argument("-p", "--password", type=str, required=True, help="Password for API")
+    parser.add_argument("-u", "--url", type=str, help="URL of the server")
+    parser.add_argument("-p", "--password", type=str, help="Password for API")
     parser.add_argument("-r", "--reload", type=int, default=5, help="Number of reloads per second (default: 5)")
     args = parser.parse_args()
 
@@ -22,7 +22,10 @@ def run():
 
     # connect to lightbull api
     try:
-        api = Lightbull(args.url, args.password)
+        if args.url and args.password:
+            api = Lightbull(args.url, args.password)
+        else:
+            api = Lightbull()
     except (LightbullError, OSError) as e:
         fail("Cannot connect to lightbull API: {}".format(e))
 

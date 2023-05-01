@@ -4,7 +4,8 @@ from .utils import fail
 
 
 class LedWidget(QtWidgets.QWidget):
-    """ Main widgets containing all parts. """
+    """Main widgets containing all parts."""
+
     def __init__(self, api):
         super(LedWidget, self).__init__()
         self._api = api
@@ -40,7 +41,7 @@ class LedWidget(QtWidgets.QWidget):
 
 class LedPartWidget(QtWidgets.QWidget):
     def __init__(self, partname, numleds):
-        """ Widget for one part, containing name and LED pixels. """
+        """Widget for one part, containing name and LED pixels."""
         super(LedPartWidget, self).__init__()
 
         self.title = QtWidgets.QLabel(partname)
@@ -67,7 +68,8 @@ class LedPartWidget(QtWidgets.QWidget):
 
 
 class GraphicsLed(QtWidgets.QGraphicsRectItem):
-    """ Widget to render the LED pixels of one part. """
+    """Widget to render the LED pixels of one part."""
+
     def __init__(self, counter=0):
         super(GraphicsLed, self).__init__(counter * 10, 0, 10, 10)
         self.setColor(0, 0, 0)

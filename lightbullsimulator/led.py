@@ -13,7 +13,7 @@ class LedWidget(QtWidgets.QWidget):
 
     def initUI(self):
         try:
-            parts = self._api.config().get("parts", None)
+            parts = self._api.config.get().get("parts", None)
             data = self._api.simulator()
         except LightbullError as e:
             fail("Cannot query lightbull API: {}".format(e))
